@@ -31,6 +31,9 @@
 	<td>2022-09</td>
 </tr>
 <tr>
+	<td>PostgreSQL</td>
+	<td>15.1</td>
+</tr>
 <tr>
 	<td>VSCode</td>
 	<td>1.72</td>
@@ -42,7 +45,7 @@
 	<td>NodeJS</td>
 	<td>16</td>
 </tr>
-</tr>
+<tr>
 	<td>Yarn</td>
 	<td>4.0.0</td>
 </tr>
