@@ -2,7 +2,7 @@
 <p> O projeto desenvolvido durante as Isilives ⚡</p>
 
 <h3>Status do Projeto</h3>
-<p align="center"> Em construção... </p>
+<p align="center"> 🚧 Em construção... 🚧</p>
 
 <h3>Features</h3>
 
@@ -64,7 +64,7 @@
 
 No Terminal/Console:
 <ol>
-	<li>Faça um clone do projeto na sua máquina: <code>git clone https://github.com/Jefferson-Pedro/DSMeta </code></li>
+	<li>Faça um clone do projeto na sua máquina: <code>git clone https://github.com/Jefferson-Pedro/Sistema-Lista-De-Mercado </code></li>
 	<li>Entre na pasta raiz do projeto</li> 
 	<li>Importe o projeto: Vá em File > Import > Paste General > "Existing projects into Workspace"</li>
 	<li>Verifique se a porta do localhost está devidamente configurado na porta 8080 do contrário o programa não executará</li>
