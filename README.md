@@ -54,10 +54,7 @@
 	<td>Git</td>
 	<td>2.**</td>
 </tr>
-<tr>
-	<td>Heroku</td>
-	<td>7.0.0</td>
-</tr>
+
 </table>
 
 <h6>** Visando facilitar a demostração da aplicação, recomendo utilizar apenas o Eclipse, o VSCode e as tecnologias para rodar o projeto **</h6>
