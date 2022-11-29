@@ -1,18 +1,24 @@
 package br.com.project.appmercado.services;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import br.com.project.appmercado.DAO.ProdutoDAO;
 import br.com.project.appmercado.model.Produto;
-import br.com.project.appmercado.service.IProdutoService;
 import br.com.project.appmercado.service.ProdutoServiceImpl;
 
 
@@ -20,37 +26,68 @@ import br.com.project.appmercado.service.ProdutoServiceImpl;
 @ActiveProfiles("test")
 public class ProdutoTests {
 	
-	@Autowired
-	private IProdutoService service;
-	//private static ProdutoServiceImpl service;
-	private static Integer idFound = 1;
-	private static Integer idNotFound = 100;
-	private static Produto newProduct;
-	private static Produto createdProduct;
+	@InjectMocks
+	private ProdutoServiceImpl service;
 	
-	@BeforeAll
-	public static void setup() {
-		System.out.println("Configurando parametros de testes");
-		newProduct = new Produto();
-		newProduct.setNome("Suco");
+	@Mock
+	private ProdutoDAO dao;
+	
+	private Integer existeId = 1;
+	private Integer naoExisteId = 100;
+	private String chave = "biscoito";
+	private Produto novoProduto;
+	private Produto criaProduto;
+	private ArrayList<Produto> listaDeProdutos;
+	
+	@BeforeEach
+	public void setup() throws Exception{
+		novoProduto = new Produto();
+		novoProduto.setNome("Biscoito");
 		
-		createdProduct = new Produto();
-		createdProduct.setNome("Biscoito");
-		createdProduct.setId(1);
+		criaProduto = new Produto();
+		criaProduto.setId(1);
+		criaProduto.setNome("Biscoito");
 		
-		//Simulador de chamadas
-		/*service = Mockito.mock(ProdutoServiceImpl.class);
-		Mockito.when(service.criarNovoProduto(newProduct)).thenReturn(createdProduct);
-		Mockito.when(service.buscarPorId(idFound)).thenReturn(createdProduct);
-		Mockito.when(service.buscarPorId(idNotFound)).thenReturn(null);
-		Mockito.when(service.buscarPalavraChave("b")).thenReturn(new ArrayList<Produto>());
-		Mockito.when(service.listarTodos()).thenReturn(new ArrayList<Produto>());*/
+		listaDeProdutos = new ArrayList<Produto>();
+		Produto p1, p2;
+		p1 = new Produto();
+		p1.setId(2);
+		p1.setNome("Biscoito rechado");
+		
+		p2 = new Produto();
+		p2.setId(3);
+		p2.setNome("Biscoito salgado");
+		listaDeProdutos.add(p1);
+		listaDeProdutos.add(p2);
+		
+		
+		Mockito.when(dao.save(novoProduto)).thenReturn(criaProduto);
+		Mockito.when(dao.findById(existeId)).thenReturn(Optional.of(criaProduto));
+		Mockito.when(dao.findById(naoExisteId)).thenReturn(Optional.ofNullable(null));
+		Mockito.when(dao.findAllByNomeContaining("Bolacha")).thenReturn(new ArrayList<Produto>());
+		Mockito.when(dao.findAllByNomeContaining(chave)).thenReturn(listaDeProdutos);
+		
+		
 	}
 	
 	@Test
-	public void shouldStoreProduct() {
-		assertNotNull(service.criarNovoProduto(newProduct));
-		
-		System.out.println("É pra funcionar!!!");
+	public void deveriaCadastrarProduto() {
+		assertEquals(service.criarNovoProduto(novoProduto), criaProduto);
+	}
+	@Test
+	public void deveriaRetornarPeloId() {
+		assertNotNull(service.buscarPorId(existeId));
+	}
+	@Test
+	public void deveriaNaoEncontrarId() {
+		assertNull(service.buscarPorId(naoExisteId));
+	}
+	@Test
+	public void deveriaRetornarListaComPalavraChave() {
+		assertTrue(service.buscarPalavraChave(chave).size() > 0);
+	}
+	@Test
+	public void deveriaRetornarListaVazia() {
+		assertTrue(service.buscarPalavraChave("Biscoito").size() == 0);
 	}
 }
