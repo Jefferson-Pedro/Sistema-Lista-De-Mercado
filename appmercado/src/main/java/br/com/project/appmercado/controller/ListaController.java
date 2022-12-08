@@ -37,7 +37,7 @@ public class ListaController{
 		return ResponseEntity.notFound().build();
 	}	
 
-	@GetMapping("/lista")
+	@PostMapping("/listas")
 	public ResponseEntity<Lista> criarNovaLista(@RequestBody Lista nova) {
 		Lista res = service.criarNovaLista(nova);
 		if(res != null) {
