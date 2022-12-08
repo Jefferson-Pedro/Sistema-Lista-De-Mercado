@@ -1,0 +1,26 @@
+#float, .add{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	box-shadow: 2px 2px 3px #999;
+
+}
+.add{
+	font-size: 40px;
+	padding-top: -12%;
+	text-align:center;
+}
+
+.my-float{
+	margin-top:25px;
+}
+
+.lista{
+	border-bottom: 1px solid gray;
+	margin-top: 10px;
+}

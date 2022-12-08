@@ -26,7 +26,7 @@ public class ItemListaController{
 		return ResponseEntity.badRequest().build();
 	}
 
-	@PutMapping("/itemlista/{numSeq")
+	@PutMapping("/itemlista/{numSeq}")
 	public ResponseEntity<ItemLista> alterarItem(@RequestBody ItemLista item, @PathVariable Integer numSeq) {
 		item.setNumSeq(numSeq);
 		ItemLista res = service.alterarItem(item);

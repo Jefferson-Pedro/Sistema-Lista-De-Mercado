@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row" >
+        <div class="'col-12">
+            <h3 class="text-center">Lista de Compras</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row lista" *ngFor="let Item of listas">
+        <div class="col-4">{{Item.data}}</div>
+        <div class="col-8">{{Item.nomeMercado}} R$ {{Item.valorTotal}} </div>
+    </div>
+
+</div>
+
+ <!-- Modal de Inclusão de listas -->
+    <button type="button" id="float" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa fa-plus my-float"></i>
+        <div class="add">+</div>
+     </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Incluir Nova Lista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      
+        <div class="modal-body">
+          <div class="mb-3">
+            <input class="form-control" type="text" placeholder="Data da Compra" aria-label="Disabled input example" disabled >
+            <input class="form-control" type="date" id="txtData" [(ngModel)] ="novaLista.data">     
+          </div> 
+          <div class="mb-3">
+            <input class="form-control" type="text" placeholder="Nome do Local" aria-label="Disabled input example" disabled>
+            <input class="form-control" type="text" id="txtLocal" [(ngModel)] ="novaLista.nomeMercado">     
+          </div>
+          <div class="mb-3">
+            <input class="form-control" type="txt" placeholder="Orçamento | Valor Total" aria-label="Disabled input example" disabled>
+            <input class="form-control" type="number" id="txtValorTotal" [(ngModel)] ="novaLista.valorTotal">     
+          </div>
+
+      </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)= cadastrarLista()
+          >Armazenar</button>
+        </div>
+      </div>
+  </div>
+
+
+  <!--"-->
