@@ -33,10 +33,11 @@ export class ListasComponent implements OnInit {
    public cadastrarLista(){
     this.service.cadastrarLista(this.novaLista) .subscribe({
           next: () => {
-                  console.log("Deu certo");
+                  alert("Sucesso! Nova Lista Cadastrada 😉");
+                  this.getAllListas();
           },
           error: (erro) => {
-                  alert("Deu  ruim!");
+                  alert("Erro! Infelizmente a Lista não pode ser cadastrada 😞");
           }
       }
     );  
