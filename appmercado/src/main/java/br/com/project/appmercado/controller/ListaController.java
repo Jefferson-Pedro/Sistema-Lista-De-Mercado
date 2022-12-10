@@ -59,12 +59,6 @@ public class ListaController{
 	@DeleteMapping("listas/{id}")
 	public ResponseEntity<?> removerLista(@PathVariable Integer id) {
 		service.removerLista(id);
-		return ResponseEntity.ok("ok");
-		
+		return ResponseEntity.ok("ok");	
 	}
-
-
-	
-
-	
 }

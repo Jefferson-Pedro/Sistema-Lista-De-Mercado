@@ -1,3 +1,4 @@
+import { ItemLista } from "./ItemLista";
 
 
 export class Lista{
@@ -6,7 +7,7 @@ export class Lista{
     public nomeMercado: string = '';
     public valorTotal: number = 0;
     public status: number = 0;
-
+    public itens: ItemLista[] = [];
     public constructor(){
        
     }

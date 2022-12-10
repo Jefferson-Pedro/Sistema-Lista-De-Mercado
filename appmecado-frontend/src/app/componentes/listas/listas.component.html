@@ -7,7 +7,10 @@
     <hr>
     <div class="row lista" *ngFor="let Item of listas">
         <div class="col-4">{{Item.data}}</div>
-        <div class="col-8">{{Item.nomeMercado}} R$ {{Item.valorTotal}} </div>
+        <div class="col-8">
+          <a [routerLink]="['/detalhe',Item.id]"> {{Item.nomeMercado}} R$ {{Item.valorTotal}}
+          </a> 
+        </div>
     </div>
 
 </div>

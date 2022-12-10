@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tbl_lista")
 public class Lista {
@@ -34,6 +37,7 @@ public class Lista {
 	private Integer status;
 	
 	@OneToMany(mappedBy = "lista", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("lista")
 	private List<ItemLista> itens;
 	
 	

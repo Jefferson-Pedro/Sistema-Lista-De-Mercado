@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tbl_itemlista")
 public class ItemLista {
@@ -35,6 +37,7 @@ public class ItemLista {
 	
 	@ManyToOne
 	@JoinColumn(name = "tbl_lista_id_lista")
+	@JsonIgnoreProperties("item")
 	private Lista lista;
 
 	public Integer getNumSeq() {

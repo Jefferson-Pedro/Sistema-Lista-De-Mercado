@@ -18,4 +18,8 @@ export class ListasService {
   public cadastrarLista(lista:Lista):Observable<Lista>{
     return this.http.post<Lista>(environment.apiUrl+"/listas", lista);
   }
+
+  public recuperarPorId(id: number): Observable<Lista>{
+      return this.http.get<Lista>(environment.apiUrl+ "/listas/"+id)
+  }
 }
