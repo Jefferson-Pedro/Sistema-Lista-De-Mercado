@@ -1,34 +1,41 @@
 <div class="container">
-    <div class="row titulo">
-        <div class="col-12 text-center">
+    <div class="row">
+      <div class="col-2 text-center voltar">
+        <a [routerLink]='["/"]'> <i class="fa-solid fa-chevron-left fa-1x"></i> </a>
+      </div>
+        <div class="col-10 text-center">
             <h3>{{listaCompras.nomeMercado}}</h3>
         </div>
     </div>
 
     <div class="row titulo"> 
         <div class="col-12">
-            Data da compra: {{listaCompras.data}}   Valor Total R$ {{listaCompras.valorTotal}} 
+            Data da compra: {{listaCompras.data}}  | Valor Total <strong>R${{listaCompras.valorTotal}}</strong> 
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-12">
-            <button type="button" class="btn btn-primary" (click)="exibirModal()">Adicionar Item</button>
+            <button type="button" class="btn btn-success" (click)="exibirModal()">Adicionar Item</button>
         </div>
     </div>
     <!--Repetição dos itens da lista-->
     <div class = "row" *ngFor="let Item of listaCompras.itens">
         <div class="row">
             <div class="col-7">
-                {{Item.produto.nome}}   
+               <span *ngIf="Item.concluido == 0" class="pendente"> {{Item.produto.nome}} </span>
+               <span *ngIf="Item.concluido == 1" class="concluido"> {{Item.produto.nome}} </span>
             </div>
-            <div class="col-2">
+            <div class="col-1">
                 {{Item.quantidade}}
             </div>
             <div class="col-2">
                 {{Item.precoTotal | currency}}
             </div>
             <div class="col-1">
-                <input type="checkbox" class="form-check">
+              <span *ngIf="Item.concluido == 0">  <input type="checkbox" (click)="atualizarStatus(Item)" class="form-check"> </span>
+            </div>
+            <div class="col-1">
+              <i class="fa-solid fa-trash-can"></i>
             </div>
         </div>
     </div>
@@ -78,3 +85,6 @@
       </div>
     </div>
   </div>
+
+
+  <!-- <a [routerLink]='["/"]'>-->

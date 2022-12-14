@@ -6,19 +6,20 @@
     </div>
     <hr>
     <div class="row lista" *ngFor="let Item of listas">
-        <div class="col-4">{{Item.data}}</div>
-        <div class="col-8">
-          <a [routerLink]="['/detalhe',Item.id]"> {{Item.nomeMercado}} R$ {{Item.valorTotal}}
-          </a> 
+        <div class="col-3">{{Item.data | date: 'dd/MM/yyyy'}}</div>
+        <div class="col-7">
+          <a [routerLink]="['/detalhe',Item.id]"> {{Item.nomeMercado}} </a> 
         </div>
+        <div class="col-2">{{Item.valorTotal | currency: ''}}</div>
     </div>
 
 </div>
 
  <!-- Modal de Inclusão de listas -->
     <button type="button" id="float" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       <div class="add">
         <i class="fa fa-plus my-float"></i>
-        <div class="add">+</div>
+       </div>
      </button>
 
   <!-- Modal -->

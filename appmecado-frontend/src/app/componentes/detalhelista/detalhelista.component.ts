@@ -95,4 +95,19 @@ export class DetalhelistaComponent {
       }
     });
   }
+
+  public atualizarStatus(item: ItemLista){
+    item.concluido = 1;
+    item.lista = new Lista();
+    item.lista.id = this.idLista;
+    this.itemListaSrv.alterarItem(item).subscribe({
+      next: (res: ItemLista) => {  
+        console.log("Item concluido!")
+      },
+      error: (erro) => {
+        alert("Erro! Não foi possivel atualizar item. 😞");
+      }
+    });
+
+  }
 }
