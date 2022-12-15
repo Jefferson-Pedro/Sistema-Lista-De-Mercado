@@ -87,7 +87,7 @@ export class DetalhelistaComponent {
     this.itemListaSrv.adicionarNovoItem(this.novoItem).subscribe({
       next: (res: ItemLista) => {  
         alert("Item cadastrado com sucesso! 😉")
-        this.recuperarDetalhesDaLista(this.);
+        this.recuperarDetalhesDaLista(this.idLista);
     },
       error: (erro) => {
         alert("Erro! Não foi possivel cadastrar novo produto. 😞");
