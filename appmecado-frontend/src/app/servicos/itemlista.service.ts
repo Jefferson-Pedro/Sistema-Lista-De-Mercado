@@ -20,4 +20,5 @@ export class ItemlistaService {
   public alterarItem(item: ItemLista) : Observable<ItemLista>{
     return this.http.put<ItemLista>(environment.apiUrl+"/itemlista/"+item.numSeq, item);
   }
+  
 }

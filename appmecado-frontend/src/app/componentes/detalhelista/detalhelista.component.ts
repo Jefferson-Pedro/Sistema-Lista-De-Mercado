@@ -87,8 +87,7 @@ export class DetalhelistaComponent {
     this.itemListaSrv.adicionarNovoItem(this.novoItem).subscribe({
       next: (res: ItemLista) => {  
         alert("Item cadastrado com sucesso! 😉")
-        this.novoItem = new ItemLista();
-        this.recuperarDetalhesDaLista(this.idLista);
+        this.recuperarDetalhesDaLista(this.);
     },
       error: (erro) => {
         alert("Erro! Não foi possivel cadastrar novo produto. 😞");
@@ -108,6 +107,18 @@ export class DetalhelistaComponent {
         alert("Erro! Não foi possivel atualizar item. 😞");
       }
     });
+  }
 
+  public excluirItem(item: number){
+      this.idLista = item
+      this.itemListaSrv.removerItem(this.idLista).subscribe({
+      next: () => {  
+        alert("Item excluido com sucesso! 😉"); 
+        this.recuperarDetalhesDaLista(this.idLista);
+      },
+      error: (erro) => {
+        alert("Erro! Não foi possivel excluir o produto. 😞");
+      }
+    });
   }
 }

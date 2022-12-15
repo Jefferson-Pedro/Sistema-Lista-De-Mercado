@@ -8,7 +8,6 @@ export class Lista{
     public valorTotal: number = 0;
     public status: number = 0;
     public itens: ItemLista[] = [];
-    public constructor(){
-       
-    }
+
+    public constructor(){}
 }

@@ -35,7 +35,7 @@
               <span *ngIf="Item.concluido == 0">  <input type="checkbox" (click)="atualizarStatus(Item)" class="form-check"> </span>
             </div>
             <div class="col-1">
-              <i class="fa-solid fa-trash-can"></i>
+              <i class="fa-solid fa-trash-can" (click)="excluirItem(Item.numSeq)"></i>
             </div>
         </div>
     </div>
@@ -54,8 +54,9 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel"> Adicionar Item da Lista </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
+         <!-- Formulario do produto e item/quantidade opcionais-->
         <div class="modal-body">
-          <!-- Formulario do produto e item/quantidade opcionais-->
           <label for="selecionarProduto">Selecione o Produto</label>
           <select name="" class="form-select"[(ngModel)]="novoItem.produto.id">
             <option *ngFor="let Prod of listaProdutos" [value]=[Prod.id]>

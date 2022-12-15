@@ -18,4 +18,5 @@ export class ProdutosService {
   public addNovoProduto(produto: Produto): Observable<Produto[]>{
     return this.http.post<Produto[]>(environment.apiUrl + "/produtos", produto);
   }
+
 }
