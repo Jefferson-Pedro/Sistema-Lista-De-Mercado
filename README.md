@@ -43,11 +43,11 @@
 	<td>10</td>
 </tr>
 	<td>NodeJS</td>
-	<td>16</td>
+	<td>18+</td>
 </tr>
 <tr>
-	<td>Yarn</td>
-	<td>4.0.0</td>
+	<td>Angular CLI</td>
+	<td>15.0.2</td>
 </tr>
 <tr>
 	<td>SpringBoot</td>
@@ -62,12 +62,14 @@
 
 <h6>** Visando facilitar a demostração da aplicação, recomendo utilizar apenas o Eclipse, o VSCode e as tecnologias para rodar o projeto **</h6>
 
-No Terminal/Console:
+Como abrir o projeto:
 <ol>
 	<li>Faça um clone do projeto na sua máquina: <code>git clone https://github.com/Jefferson-Pedro/Sistema-Lista-De-Mercado </code></li>
 	<li>Entre na pasta raiz do projeto</li> 
-	<li>Importe o projeto: Vá em File > Import > Paste General > "Existing projects into Workspace"</li>
+	<li>No Eclipse, importe o projeto appmecado-backend: Vá em File > Import > Paste General > "Existing projects into Workspace"</li>
 	<li>Verifique se a porta do localhost está devidamente configurado na porta 8080 do contrário o programa não executará</li>
+	<li>No VSCode, localize e abra a pasta appmecado-frontend </li>
+	<li>No terminal/console digite: <code>ng serve -o</code> </li>
 </ol>
 
 <h3>O que foi desenvolvido dentro do projeto?</h3>
