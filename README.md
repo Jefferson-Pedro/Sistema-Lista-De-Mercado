@@ -2,7 +2,7 @@
 <p> O projeto desenvolvido durante as Isilives ⚡</p>
 
 <h3>Status do Projeto</h3>
-<p align="center"> 🚧 Em construção... 🚧</p>
+<p align="center"> Concluído 🏆</p>
 
 <h3>Features</h3>
 
