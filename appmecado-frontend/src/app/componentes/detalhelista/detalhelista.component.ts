@@ -17,7 +17,7 @@ export class DetalhelistaComponent {
   public listaProdutos: Produto[] = [];
   public novoProduto: Produto;
   public novoItem: ItemLista;
-  public formNovoProduto: Boolean = false;
+   public formNovoProduto: Boolean = false;
   public idLista: number = 0;
   public listaCompras: Lista = new Lista();
 
@@ -38,10 +38,13 @@ export class DetalhelistaComponent {
   }
 
   public recuperarDetalhesDaLista(idLista: number){
+    
     this.listaService.recuperarPorId(this.idLista).subscribe({
       next: (res: Lista) => {
         this.listaCompras = res;
         console.log(res);
+        console.log('Lista Inteira: ', this.listaCompras);
+        console.log(this.idLista);
       },
       error: (err) => {
         alert("Erro ao recuperar as Listas de Compras")
@@ -50,9 +53,12 @@ export class DetalhelistaComponent {
   }
 
   public recuperarTodosOsProdutos(){
+   
     this.produtoService.retornaTodosProdutos().subscribe({
       next: (res: Produto[]) => {
         this.listaProdutos = res;
+        console.log('Lista Inteira: ', this.listaCompras);
+        console.log(this.idLista);
       },
       error: (err) => {
         alert("Erro ao recuperar as Listas de Produtos")
@@ -88,6 +94,9 @@ export class DetalhelistaComponent {
       next: (res: ItemLista) => {  
         alert("Novo item inserido com sucesso! 😉")
         this.recuperarDetalhesDaLista(this.idLista);
+        console.log('Lista Inteira: ', this.listaCompras);
+        console.log('Id lista: ', this.idLista);
+        console.log('Id produto: ', this.listaProdutos);
     },
       error: (erro) => {
         alert("Erro! Não foi possivel inserir novo item. 😞");
@@ -109,15 +118,17 @@ export class DetalhelistaComponent {
     });
   }
 
-  public excluirItem(item: number){
-      this.idLista = item
-      this.itemListaSrv.removerItem(this.idLista).subscribe({
-      next: () => {  
+  public excluirItem(item: ItemLista){
+      
+      this.itemListaSrv.removerItem(item.numSeq).subscribe({
+      next: (res) => {  
         alert("Item excluido com sucesso! 😉"); 
+        console.log(res);
         this.recuperarDetalhesDaLista(this.idLista);
       },
       error: (erro) => {
         alert("Erro! Não foi possivel excluir o produto. 😞");
+        
       }
     });
   }

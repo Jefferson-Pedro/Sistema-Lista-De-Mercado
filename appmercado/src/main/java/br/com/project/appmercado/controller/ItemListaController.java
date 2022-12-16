@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.project.appmercado.dto.RespostaRequisicao;
 import br.com.project.appmercado.model.ItemLista;
 import br.com.project.appmercado.service.IItemListaService;
 
@@ -41,6 +42,6 @@ public class ItemListaController{
 	@DeleteMapping("/itemlista/{numSeq}")
 	public ResponseEntity<?> removerItem(@PathVariable Integer numSeq) {
 		service.removerItem(numSeq);
-		return ResponseEntity.ok("ok");
+		return ResponseEntity.status(200).body(new RespostaRequisicao("Funcionou!"));
 	}
 }
